@@ -1,0 +1,239 @@
+\documentclass{beamer}
+
+\usetheme{simple}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{fourier}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\usepackage[scale=2]{ccicons}
+
+%paquete para el checkmark y la cruz
+\usepackage{pifont}
+%paquete para el signo de copyright
+\usepackage{textcomp}
+
+\newcommand{\dq}[1]{``#1''}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\newcommand{\emoji}[1]{\includegraphics[height=1em]{emojis/#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLEPAGE                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Datawarehousing para datos genéticos, socioeconómicos y fenotípicos, con visualización 3D}
+\subtitle{SciPy 2018}
+\date{\today}
+\author{Luciano Serruya Aloisi \\ Pablo Toledo Margalef}
+\institute{Universidad Nacional de la Patagonia San Juan Bosco}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}[fragile]{Roadmap}
+    \begin{itemize}
+        \item[\cmark] Introduction \emoji{wave.png}\emoji{wave.png}
+        \item[\cmark] A little bit of software engineering \emoji{dev.png}\emoji{scientist.png}
+            \begin{itemize}
+                \item What we did
+                \item Why we did it that way
+                \item How we did it
+            \end{itemize}
+        \item[\cmark] Demo time \emoji{sunglasses.png}\emoji{rocket.png}\emoji{fire.png}
+        \item[\cmark] Conclusions \emoji{thinking.png}
+        \item[\cmark] The end \emoji{pray.png}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{whoami}}
+    \begin{columns}
+        \column{.5\textwidth}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{profile-luciano.png}
+            \caption{\emph{Linux, Python, and Javascript}}
+            \includegraphics[height=1.2em]{logo-twitter.png} \texttt{@LucianoSerruya} 
+            \linebreak
+            \includegraphics[height=1.2em]{logo-github.png} \texttt{@LucianoFromTrelew} 
+        \end{figure}
+
+        \column{.5\textwidth}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.8\linewidth]{profile-pablo.png}
+                \caption{\emph{Linux and Python. FP enthusiast}}
+                \includegraphics[height=1.2em]{logo-twitter.png} \texttt{@T\_Papablo} 
+                \linebreak
+                \includegraphics[height=1.2em]{logo-github.png} \texttt{@PaPablo} 
+            \end{figure}
+    \end{columns}
+
+    \vspace*{5mm}
+    Both students at \textbf{UNPSJB, Trelew}
+\end{frame}
+
+\begin{frame}[fragile]{Getting in context}
+    \begin{itemize}
+        \item \textbf{IPCSH-CONICET} studies how traditions, manners, and ancestry heritage relate themselves with medical interest physical variables.
+        \item \textbf{RAICES Project} (\textbf{IPCSH-CONICET}) aims to build a Patagonian \emph{biobank} (a genetic data bank) 
+        \item It is intended to help futures applications and design of public health politcs
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Getting in context (cont.)}
+    \begin{itemize}
+        \item RAICES Project sampling consists of a poll made to the volunteers (people who have been born in Argentina) and others several different exams
+        \item These polls were (and still are) completed via a Google Form \emoji{eyes.png} and then exported to a \texttt{xls} (Excel file) 
+        \item The exams also output their own files
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{CENPAT Internship}
+    \begin{itemize}
+        \item This work comes out as a internship at CENPAT-CONICET
+        \item Researchers of the project needed a software to handle all that data and files \emoji{scream.png}
+        \item That is where we come on in! To develop a datawarehouse and a web application to fulfill their need
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Design decisions \emoji{straight_ruler.png}\emoji{triangular_ruler.png}}
+    \begin{itemize}
+        \item Web application
+        \item REST Architecture \emoji{construction.png}
+        \item noSQL Database (Mongo)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Development}
+    \begin{itemize}
+        \item Datawarehouse (Python \emoji{snake.png} + Mongo = Mongoengine FTW)
+        \item Pandas \emoji{pandas.png} for data processing
+        \item DRF + Vue.js
+        \item THREE.js \emoji{eye.png}
+        \item Bokeh \emoji{bar_charts.png}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{center}
+        \Huge
+        IT'S DEMO TIME
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Conclusions \& Resolutions}
+    \begin{itemize}
+        \item You will have to integrate your frontend applicaciont  with your API sooner or later \emoji{man_shrugging.png}
+        \begin{itemize}
+            \item Decoupled architectures generates \textbf{coupling} if there is \textbf{a lack of communication} between both development teams \emoji{speak_no_evil.png}
+        \end{itemize}
+        \item Working with files and REST it is not the happiest thing to do (it was not for us at least)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Conclusions \& Resolutions (cont.)}
+    \begin{itemize}
+        \item If you get to work with 3D visualization, keep an eye on the following
+        \begin{itemize}
+            \item Size and scale of your mesh
+            \item Camera and mesh position and angle
+            \item \textbf{Lighting} (if you are working with textures also) 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{I would like to know some more about it, please \emoji{nerd.png}}
+    \begin{itemize}
+        \item \textbf{RAICES Project} - \texttt{https://twitter.com/raices\_proyecto}
+        \item \textbf{IPCSH} - \texttt{https://ipcsh.conicet.gov.ar/} 
+        \item \textbf{CENPAT} - \texttt{http://www.cenpat-conicet.gob.ar/} 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+    \begin{center}
+        \Large 
+        I listen to your questions \emoji{cowboy.png}
+        %Shoot me your questions \emoji{pistol.png}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]{The end \emoji{angel.png}}
+    \begin{itemize}
+        \item ¡Muchas gracias!
+        \item ¡Muito obrigado!
+        \item Thank you very much!
+    \end{itemize}
+\end{frame}
+
+
+
+
+%\begin{frame}[fragile]{Introducción}
+    %\begin{itemize}
+        %\item Presentación
+        %\begin{itemize}
+            %\item Quiénes somos
+            %\item Proyecto RAICES: de dónde salió y para dónde va
+            %\item Pasantía LCI
+        %\end{itemize}
+        %\item Trabajos anteriores: CANDELA
+        %\item Objetivos del sistema
+        %\item Requerimientos funcionales del sistema
+    %\end{itemize}
+%\end{frame}
+
+%\begin{frame}[fragile]{Diseño}
+    %\begin{itemize}
+        %\item Decisiones de diseño
+        %\item Arquitectura
+        %\item Herramientas utilizadas
+    %\end{itemize}
+    %\end{frame}
+%\begin{frame}[fragile]{Implementación}
+
+    %\begin{itemize}
+        %\item Integración de las herramientas \includegraphics[height=1em]{rowing_boat.png}
+        %\begin{itemize}
+            %\item Problemas hallados
+        %\end{itemize}
+        %\item Procesamiento de la planilla \includegraphics[height=1em]{snake.png}\includegraphics[height=1em]{see_no_evil.png}
+        %\item Visualización 3D \includegraphics[height=1em]{wrestle.png}
+        %\item Demo por aquí, demo por allá \includegraphics[height=1em]{rocket.png}
+    %\end{itemize}
+    
+%\end{frame}
+
+%\begin{frame}[fragile]{Conclusiones}
+    
+    %\begin{itemize}
+        %\item Alguna conclusión sobre todo lo hecho y charlado \includegraphics[height=1em]{man_shrugging.png}
+    %\end{itemize}
+
+%\end{frame}
+
+%\begin{frame}[fragile]{¿Preguntas?}
+    
+    %\Large ¿Alguna pregunta? \includegraphics[height=1em]{thinking.png}
+
+%\end{frame}
+
+%\begin{frame}[fragile]{Fin}
+    
+    %\LARGE ¡Muchas gracias! \includegraphics[height=1em]{hugging_face.png}\includegraphics[height=1em]{hugging_face.png}
+%\end{frame}
+
+
+
+\end{document}
