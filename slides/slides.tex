@@ -8,7 +8,6 @@
 \graphicspath{{img/}}
 \usepackage{biblatex}
 \addbibresource{references.bib}
-%ESTARÍA ROMPIENDO TOD0 EL PAQUETE caption
 \usepackage{caption}
 \captionsetup[figure]{labelformat=empty}
 \usepackage[scale=2]{ccicons}
@@ -179,15 +178,24 @@
     \begin{center}
         \Large 
         I listen to your questions \emoji{cowboy.png}
-        %Shoot me your questions \emoji{pistol.png}
     \end{center}
 \end{frame}
+
 \begin{frame}[fragile]{The end \emoji{angel.png}}
-    \begin{itemize}
-        \item ¡Muchas gracias!
-        \item ¡Muito obrigado!
-        \item Thank you very much!
-    \end{itemize}
+    \begin{columns}
+        \column{.5\textwidth}
+            \begin{itemize}
+                \item ¡Muchas gracias!
+                \item ¡Muito obrigado!
+                \item Thank you very much!
+            \end{itemize}
+        \column{.5\textwidth}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[]{logoUnpsjb.png}
+                \caption{UNPSJB logo}
+            \end{figure}
+    \end{columns}
 \end{frame}
 
 \end{document}
